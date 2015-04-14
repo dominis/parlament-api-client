@@ -54,7 +54,6 @@ class PAPI():
 
     def request_wrapper(self, url, **params):
         self.logger.debug('processing request - url: %s params: %s' % (url, params))
-        params.update({'access_token': self.token})
 
         if self.cache:
             key = self.cache.generateKey([url, params])
@@ -77,6 +76,7 @@ class PAPI():
         return self.content(resp)
 
     def client(self, url, params):
+        params.update({'access_token': self.token})
         r = requests.get(url, params=params)
         r.encoding = 'utf-8'
         if r.status_code != 200:
