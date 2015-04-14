@@ -67,14 +67,14 @@ class PAPI():
                 resp = self.client(url, params)
                 try:
                     self.cache.set(key, resp)
+                    self.logger.debug('cache set: %s' % key)
                 except Exception, e:
                     self.logger.error('cache store failed - key: %s error: %s' % (key, e))
-
         else:
             resp = self.client(url, params)
 
 
-        return self.content(resp.text)
+        return self.content(resp)
 
     def client(self, url, params):
         r = requests.get(url, params=params)
@@ -84,7 +84,7 @@ class PAPI():
 
         self.logger.debug('request: %s' % url)
 
-        return r
+        return r.text
 
     def content(self, xml):
         return xmltodict.parse(xml)[self.endpoint]
@@ -104,7 +104,11 @@ class Cache(object):
         return hashlib.md5(json.dumps(args[1])).hexdigest()
 
     def get(self, key):
-        return self.client.get(key)
+        resp = self.client.get(key)
+        if resp is None:
+            raise KeyError
+
+        return resp
 
     def set(self, key, value):
         return self.client.set(key, value)
