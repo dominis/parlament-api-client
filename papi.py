@@ -30,7 +30,9 @@ class PAPI():
         handler = logging.StreamHandler()
         handler.setLevel(log_level)
 
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter(
+                    '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+                )
         handler.setFormatter(formatter)
         self.logger.addHandler(handler)
 
@@ -72,7 +74,6 @@ class PAPI():
         else:
             resp = self.client(url, params)
 
-
         return self.content(resp)
 
     def client(self, url, params):
@@ -92,7 +93,7 @@ class PAPI():
 
 class Cache(object):
     def __init__(self):
-        raise Exception (
+        raise Exception(
             'Please override __init__() to'
             'provide a Connection object.'
             )
