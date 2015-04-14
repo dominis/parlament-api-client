@@ -2,6 +2,7 @@
 A very simple python client for the Hungarian Parliament's API
 
 You can obtain an access token at: http://www.parlament.hu/w-api-tajekoztato
+
 API documentation: http://parlament.hu/documents/10181/122580/webapi_felhasznaloi_kezikonyv.pdf/ecd95564-d32d-4b84-9748-89c4833ea10d
 
 ## Getting started
