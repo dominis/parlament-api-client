@@ -57,7 +57,7 @@ class PAPI():
     def request_wrapper(self, url, **params):
         self.logger.debug('processing request - url: %s params: %s' % (url, params))
 
-        if self.cache:
+        if self.cache and 'nocache' not in params.keys():
             key = self.cache.generateKey([url, params])
             try:
                 self.logger.debug('cache get: %s' % key)
