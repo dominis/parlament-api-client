@@ -10,6 +10,11 @@ API documentation: http://parlament.hu/documents/10181/122580/webapi_felhasznalo
 pip -r install requirements.txt
 ```
 
+## Install
+```
+pip install git+https://github.com/dominis/parlament-api-client.git#egg=parlament-api-client
+```
+
 ## Usage
 ### Simple example
 ```python
